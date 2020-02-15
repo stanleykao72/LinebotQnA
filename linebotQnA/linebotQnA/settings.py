@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  os.getenv (
+SECRET_KEY = os.getenv(
     "SERRET_KEY", "tysvfbz5z-z$7q(1s(58sj$fhbhdgl*%d9v51$8v3o#v710o(e"
-   )
+    )
 # LINE_CHANNEL_ACCESS_TOKEN = '4z3/8qa8A64sRanN/637QpEnUxFc6SbNssKv1lhmHiOwumt5DV2YxK7NxbgxRECkHwUx2Ko1saQmB+Az8/IA3XjihKF59sUnzppdIKv4CDdskRUFmffSwLFXIyca5klH8aV+D9xGlJwF2xFOr12b4AdB04t89/1O/w1cDnyilFU='
 # LINE_CHANNEL_SECRET = '272fa90a0dd35c051bb05566f3cb3014'
 CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
@@ -33,7 +33,7 @@ ENDPOINT_KEY = os.getenv("ENDPOINT_KEY")
 KB = os.getenv("KB")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.getenv("DEBUG") == "true" else False
 
 ALLOWED_HOSTS = ['*']
 
