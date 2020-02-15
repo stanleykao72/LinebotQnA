@@ -25,7 +25,7 @@ def webhook(request: HttpRequest):
     body = request.body.decode()
     print("signature =", signature)
     try:
-        handler.handle(body, signature)
+        # handler.handle(body, signature)
         events = parser.parse(body, signature)
         print("try....")
     except InvalidSignatureError:
