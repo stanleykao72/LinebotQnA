@@ -8,6 +8,7 @@ from django.http.response import HttpResponse, HttpResponseBadRequest, HttpRespo
 from linebot import LineBotApi, WebhookHandler, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from module import func
 
 logger = logging.getLogger("django")
 
