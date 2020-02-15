@@ -34,17 +34,21 @@ def sendQnA(event, mtext):  # QnA
     question = {
         'question': mtext,
     }
+    print("question =", question)
     content = json.dumps(question)
     headers = {
         'Authorization': 'EndpointKey ' + endpoint_key,
         'Content-Type': 'application/json',
         'Content-Length': len(content)
     }
+    print("headers =", headers)
     conn = http.client.HTTPSConnection(host)
+    print("conn =", conn)
     conn.request("POST", method, content, headers)
     response = conn.getresponse()
     result = json.loads(response.read())
     result1 = result['answers'][0]['answer']
+    print("result1 =", result1)
     if 'No good match' in result1:
         text1 = '很抱歉，資料庫中無適當解答！\n請再輸入問題。'
         # 將沒有解答的問題寫入資料庫
