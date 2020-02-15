@@ -23,10 +23,10 @@ print("handler=", settings.CHANNEL_SECRET)
 def webhook(request: HttpRequest):
     print(request.headers)
     signature = request.headers["X-Line-Signature"]
-    body = request.body.decode()
-    print(reqest.body)
-    print(body)
     print("signature =", signature)
+    print("reqest.body =", reqest.body)
+    body = request.body.decode()
+    print(body)
     try:
         print("1")
         handler.handle(body, signature)
