@@ -10,7 +10,7 @@ from qnaapi.models import users
 line_bot_api = LineBotApi(settings.CHANNEL_ACCESS_TOKEN)
 
 host = settings.HOST  # 主機
-endpoinst_key = settings.ENDPOINT_KEY  # 授權碼
+endpoint_key = settings.ENDPOINT_KEY  # 授權碼
 kb = settings.KB  # GUID碼
 method = "/qnamaker/knowledgebases/" + kb + "/generateAnswer"
 
