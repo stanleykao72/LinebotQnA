@@ -24,9 +24,13 @@ def webhook(request: HttpRequest):
     print(request.headers)
     signature = request.headers["X-Line-Signature"]
     body = request.body.decode()
+    print(reqest.body)
+    print(body)
     print("signature =", signature)
     try:
+        print("1")
         handler.handle(body, signature)
+        print("2")
         events = parser.parse(body, signature)
         print("try....")
     except InvalidSignatureError:
