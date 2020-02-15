@@ -21,7 +21,7 @@ print("handler=", settings.CHANNEL_SECRET)
 @csrf_exempt
 @require_POST
 def webhook(request: HttpRequest):
-    print(request)
+    print(request.headers)
     signature = request.headers["X-Line-Signature"]
     body = request.body.decode()
     print("signature =", signature)
