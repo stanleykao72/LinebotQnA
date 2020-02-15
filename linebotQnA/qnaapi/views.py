@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse, HttpResponseBadRequest
 from linebot import LineBotApi, WebhookHandler, WebhookParser
-from linebot.exceptions import InvalidSignatureError
+from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 logger = logging.getLogger("django")
@@ -15,7 +15,7 @@ line_bot_api = LineBotApi(settings.CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.CHANNEL_SECRET)
 parser = WebhookParser(settings.CHANNEL_SECRET)
 print("line_bot_api=", settings.CHANNEL_ACCESS_TOKEN)
-print("handler=", WebhookHandler(settings.CHANNEL_SECRET))
+print("handler=", settings.CHANNEL_SECRET)
 
 
 @csrf_exempt
@@ -25,7 +25,7 @@ def webhook(request: HttpRequest):
     body = request.body.decode()
     print("signature =", signature)
     try:
-        # handler.handle(body, signature)
+        handler.handle(body, signature)
         events = parser.parse(body, signature)
         print("try....")
     except InvalidSignatureError:
