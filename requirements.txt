@@ -1,4 +1,4 @@
-ppdirs==1.4.3
+appdirs==1.4.3
 asgiref==3.2.3
 attrs==19.3.0
 black==19.10b0
