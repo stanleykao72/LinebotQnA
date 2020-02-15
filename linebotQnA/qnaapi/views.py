@@ -61,7 +61,7 @@ def handle_message(event: MessageEvent):
 
     else:
         print("else")
-        func.senQnA(event, mtext)
+        func.sendQnA(event, mtext)
 
     # messages = TextSendMessage(mtext)
     # print("messages =", messages)
