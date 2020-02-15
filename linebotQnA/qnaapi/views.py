@@ -24,7 +24,7 @@ def webhook(request: HttpRequest):
     print(request.headers)
     signature = request.headers["X-Line-Signature"]
     print("signature =", signature)
-    print("reqest.body =", reqest.body)
+    print("request.body =", request.body)
     body = request.body.decode()
     print(body)
     try:
