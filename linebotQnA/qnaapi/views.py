@@ -44,10 +44,11 @@ def webhook(request: HttpRequest):
 @handler.add(event=MessageEvent, message=TextMessage)
 def handle_message(event: MessageEvent):
     print("handl....")
-    # if event.source.user_id != "Ubfde1b3d40a9fe4b78fa4f3778cb374a": 
-    print("handl_message....")
+    print("handl_message....1")
     reply_token = event.reply_token
+    print("handl_message....2")
     mtext = event.message.text
+    print("handl_message....3")
     # if mtext == '@使用說明':
     #     print("if mtext")
     #     func.sendUse(event)
@@ -57,4 +58,6 @@ def handle_message(event: MessageEvent):
     #     func.senQnA(event, mtext)
 
     messages = TextSendMessage(mtext)
+    print("handl_message....4")
     line_bot_api.reply_message(reply_token, messages)
+    print("handl_message....5")
