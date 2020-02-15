@@ -18,7 +18,6 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    # url('^callback', views.callback),
     path('admin/', admin.site.urls),
     path('qnaapi/', include('qnaapi.urls')),
 ]

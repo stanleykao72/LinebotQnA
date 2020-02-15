@@ -15,7 +15,7 @@ line_bot_api = LineBotApi(settings.CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(settings.CHANNEL_SECRET)
 parser = WebhookParser(settings.CHANNEL_SECRET)
 print("line_bot_api=", settings.CHANNEL_ACCESS_TOKEN)
-print("handler=", settings.CHANNEL_SECRET)
+print("handler=", WebhookHandler(settings.CHANNEL_SECRET))
 
 
 @csrf_exempt
