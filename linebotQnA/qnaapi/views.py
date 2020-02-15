@@ -63,7 +63,7 @@ def handle_message(event: MessageEvent):
         print("else")
         func.senQnA(event, mtext)
 
-    messages = TextSendMessage(mtext)
-    print("messages =", messages)
-    line_bot_api.reply_message(reply_token, messages)
-    print("handl_message....5")
+    # messages = TextSendMessage(mtext)
+    # print("messages =", messages)
+    # line_bot_api.reply_message(reply_token, messages)
+    # print("handl_message....5")
