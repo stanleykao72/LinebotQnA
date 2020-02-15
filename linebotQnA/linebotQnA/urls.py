@@ -19,7 +19,7 @@ from django.conf.urls import url
 from qnaapi import views
 
 urlpatterns = [
-    url('^callback', views.callback),
+    # url('^callback', views.callback),
     path('admin/', admin.site.urls),
     path('qnaapi/', include('qnaapi.urls')),
 ]
