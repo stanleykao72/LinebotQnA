@@ -51,9 +51,9 @@ def handle_message(event: MessageEvent):
     print("handl....")
     print("handl_message....1")
     reply_token = event.reply_token
-    print("handl_message....2")
+    print("reply_token =", reply_token)
     mtext = event.message.text
-    print("handl_message....3")
+    print("mtext =", mtext)
     # if mtext == '@使用說明':
     #     print("if mtext")
     #     func.sendUse(event)
@@ -63,6 +63,6 @@ def handle_message(event: MessageEvent):
     #     func.senQnA(event, mtext)
 
     messages = TextSendMessage(mtext)
-    print("handl_message....4")
+    print("messages =", messages)
     line_bot_api.reply_message(reply_token, messages)
     print("handl_message....5")
