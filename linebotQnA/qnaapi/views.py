@@ -54,13 +54,13 @@ def handle_message(event: MessageEvent):
     print("reply_token =", reply_token)
     mtext = event.message.text
     print("mtext =", mtext)
-    # if mtext == '@使用說明':
-    #     print("if mtext")
-    #     func.sendUse(event)
+    if mtext == '@使用說明':
+        print("if mtext")
+        func.sendUse(event)
 
-    # else:
-    #     print("else")
-    #     func.senQnA(event, mtext)
+    else:
+        print("else")
+        func.senQnA(event, mtext)
 
     messages = TextSendMessage(mtext)
     print("messages =", messages)
