@@ -140,6 +140,7 @@ def sendStock(event, mtext):
     fn = '%s.png' % (mtext)
     print("Stock")
     stock = twstock.Stock(mtext)
+    print(stock)
     my_data = {'close': stock.close, 'date': stock.date, 'open': stock.open}
     print("pd.Dataframe")
     df1 = pd.DataFrame.from_dict(my_data)
