@@ -117,8 +117,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGES = (
     ('en', _('English')),
-    ('zh-hans', _('Simplified Chinese')),
-    ('zh-hant', _('Traditional Chinese')),
+    ('zh-Hans', _('Simplified Chinese')),
+    ('zh-Hant', _('Traditional Chinese')),
 )
 
 LANGUAGE_CODE = 'zh-Hant'
