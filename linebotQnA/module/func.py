@@ -145,10 +145,13 @@ def sendStock(event, mtext):
     print("pd.Dataframe")
     df1 = pd.DataFrame.from_dict(my_data)
 
-    print("plot")
+    print("plot1")
     df1.plot(x='date', y='close')
+    print("plot2")
     plt.title('[%s]' % (stock.sid))
+    print("plot3")
     plt.savefig(fn)
+    print("plot4")
     plt.close()
 
     print("Imgur upload")
