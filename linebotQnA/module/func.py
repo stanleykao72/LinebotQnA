@@ -104,7 +104,7 @@ def sendStockrt(event, mtext):
     mtext = mtext[1:]
     content = ''
 
-    stock_rt = twstock.realtime.get(text)
+    stock_rt = twstock.realtime.get(mtext)
     my_datetime = datetime.fromtimestamp(stock_rt['timestamp'] + 8 * 60 * 60)
     my_time = my_datetime.strftime('%H:%M:%S')
 
@@ -121,7 +121,7 @@ def sendStockrt(event, mtext):
         stock_rt['realtime']['low'])
     content += '量: %s\n' % (stock_rt['realtime']['accumulate_trade_volume'])
 
-    stock = twstock.Stock(text)  # twstock.Stock('2330')
+    stock = twstock.Stock(mtext)  # twstock.Stock('2330')
     content += '-----\n'
     content += '最近五日價格: \n'
     price5 = stock.price[-5:][::-1]
@@ -137,8 +137,8 @@ def sendStockrt(event, mtext):
 
 def sendStock(event, mtext):
     mtext = mtext[1:]
-    fn = '%s.png' % (text)
-    stock = twstock.Stock(text)
+    fn = '%s.png' % (mtext)
+    stock = twstock.Stock(mtext)
     my_data = {'close': stock.close, 'date': stock.date, 'open': stock.open}
     df1 = pd.DataFrame.from_dict(my_data)
 
