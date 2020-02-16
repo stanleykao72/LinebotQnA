@@ -62,3 +62,11 @@ def sendQnA(event, mtext):  # QnA
         text=text1
     )
     line_bot_api.reply_message(event.reply_token, message)
+
+
+def sendMe(event):
+    content = str(event.source.user_id)
+    message = TextSendMessage(
+        text=content
+    )
+    line_bot_api.reply_message(event.reply_token, message)

@@ -58,6 +58,8 @@ def handle_message(event: MessageEvent):
     if mtext == '@使用說明':
         print("if mtext")
         func.sendUse(event)
+    elif mtext.lower()=='me':
+        func.sendMe(event)
 
     else:
         print("else")
