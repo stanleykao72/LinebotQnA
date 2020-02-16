@@ -105,30 +105,30 @@ def sendStockrt(event, mtext):
     content = ''
 
     stock_rt = twstock.realtime.get(text)
-    my_datetime = datetime.fromtimestamp(stock_rt['timestamp']+8*60*60)
+    my_datetime = datetime.fromtimestamp(stock_rt['timestamp'] + 8 * 60 * 60)
     my_time = my_datetime.strftime('%H:%M:%S')
 
-    content += '%s (%s) %s\n' %(
+    content += '%s (%s) %s\n' % (
         stock_rt['info']['name'],
         stock_rt['info']['code'],
         my_time
     )
-    content += '現價: %s / 開盤: %s\n'%(
+    content += '現價: %s / 開盤: %s\n' % (
         stock_rt['realtime']['latest_trade_price'],
         stock_rt['realtime']['open'])
-    content += '最高: %s / 最低: %s\n' %(
+    content += '最高: %s / 最低: %s\n' % (
         stock_rt['realtime']['high'],
         stock_rt['realtime']['low'])
-    content += '量: %s\n' %(stock_rt['realtime']['accumulate_trade_volume'])
+    content += '量: %s\n' % (stock_rt['realtime']['accumulate_trade_volume'])
 
-    stock = twstock.Stock(text)#twstock.Stock('2330')
+    stock = twstock.Stock(text)  # twstock.Stock('2330')
     content += '-----\n'
     content += '最近五日價格: \n'
     price5 = stock.price[-5:][::-1]
     date5 = stock.date[-5:][::-1]
     for i in range(len(price5)):
-        #content += '[%s] %s\n' %(date5[i].strftime("%Y-%m-%d %H:%M:%S"), price5[i])
-        content += '[%s] %s\n' %(date5[i].strftime("%Y-%m-%d"), price5[i])
+        # content += '[%s] %s\n' %(date5[i].strftime("%Y-%m-%d %H:%M:%S"), price5[i])
+        content += '[%s] %s\n' % (date5[i].strftime("%Y-%m-%d"), price5[i])
     message = TextSendMessage(
         text=content
     )
@@ -137,13 +137,13 @@ def sendStockrt(event, mtext):
 
 def sendStock(event, mtext):
     mtext = mtext[1:]
-    fn = '%s.png' %(text)
+    fn = '%s.png' % (text)
     stock = twstock.Stock(text)
     my_data = {'close': stock.close, 'date': stock.date, 'open': stock.open}
     df1 = pd.DataFrame.from_dict(my_data)
 
     df1.plot(x='date', y='close')
-    plt.title('[%s]' %(stock.sid))
+    plt.title('[%s]' % (stock.sid))
     plt.savefig(fn)
     plt.close()
 
