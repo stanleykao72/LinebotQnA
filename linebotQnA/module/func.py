@@ -147,6 +147,7 @@ def sendStock(event, mtext):
     plt.savefig(fn)
     plt.close()
 
+    print("Imgur upload")
     client = ImgurClient(client_id, client_secret)
     print("Uploading image... ")
     image = client.upload_from_path(fn, anon=True)
