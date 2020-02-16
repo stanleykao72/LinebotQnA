@@ -158,9 +158,10 @@ def sendStock(event, mtext):
     client = ImgurClient(client_id, client_secret)
     print("Uploading image... ", client)
     image = client.upload_from_path(fn, anon=True)
-    print("Done")
+    print("image =", image)
 
     url = image['link']
+    print("url =", url)
     message = ImageSendMessage(
         original_content_url=url,
         preview_image_url=url
