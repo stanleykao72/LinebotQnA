@@ -138,27 +138,19 @@ def sendStockrt(event, mtext):
 def sendStock(event, mtext):
     mtext = mtext[1:]
     fn = '%s.png' % (mtext)
-    print("Stock")
     stock = twstock.Stock(mtext)
-    print(stock)
     my_data = {'close': stock.close, 'date': stock.date, 'open': stock.open}
-    print("pd.Dataframe")
     df1 = pd.DataFrame.from_dict(my_data)
 
-    print("plot1")
     df1.plot(x='date', y='close')
-    print("plot2")
     plt.title('[%s]' % (stock.sid))
-    print("plot3")
     plt.savefig(fn)
-    print("plot4")
     plt.close()
 
     print("Imgur upload")
     client = ImgurClient(client_id, client_secret)
-    print("Uploading image... ", client)
+    print("Uploading image... ")
     image = client.upload_from_path(fn, anon=True)
-    print("image =", image)
 
     url = image['link']
     print("url =", url)
