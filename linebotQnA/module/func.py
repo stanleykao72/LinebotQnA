@@ -154,9 +154,14 @@ def sendStock(event, mtext):
 
     url = image['link']
     print("url =", url)
-    message = ImageSendMessage(
-        original_content_url=url,
-        preview_image_url=url
-    )
+    message = [
+        TextSendMessage(
+            text=url
+        ),
+        ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+    ]
 
     line_bot_api.reply_message(event.reply_token, message)
