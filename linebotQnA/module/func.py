@@ -5,7 +5,7 @@ from datetime import timedelta, datetime
 import twstock
 
 import matplotlib
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 import pandas as pd
 
 from imgurpython import ImgurClient
@@ -148,7 +148,7 @@ def sendStock(event, mtext):
     print("plot1")
     df1.plot(x='date', y='close')
     print("plot2")
-    plt.title(mtext)
+    plt.title('[%s]' % (stock.sid))
     print("plot3")
     plt.savefig(fn)
     print("plot4")
