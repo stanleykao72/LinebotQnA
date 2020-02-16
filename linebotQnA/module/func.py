@@ -11,7 +11,7 @@ import pandas as pd
 from imgurpython import ImgurClient
 
 from linebot import LineBotApi
-from linebot.models import TextSendMessage
+from linebot.models import TextSendMessage, ImageSendMessage
 
 import http.client
 import json
