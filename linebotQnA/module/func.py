@@ -148,7 +148,7 @@ def sendStock(event, mtext):
     print("plot1")
     df1.plot(x='date', y='close')
     print("plot2")
-    # plt.title('[%s]' % (stock.sid))
+    plt.title('%s' % (stock.sid))
     print("plot3")
     plt.savefig(fn)
     print("plot4")
