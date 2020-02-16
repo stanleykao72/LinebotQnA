@@ -62,7 +62,10 @@ def handle_message(event: MessageEvent):
         func.sendMe(event)
     elif mtext.lower() == 'profile':
         func.sendProfile(event)
-
+    elif mtext.startswith('#'):
+        func.sendStockrt(event, mtext)
+    elif mtext.startswith('/'):
+        func.sendStock(event, mtext)
     else:
         print("else")
         func.sendQnA(event, mtext)

@@ -33,6 +33,9 @@ HOST = os.getenv("HOST")
 ENDPOINT_KEY = os.getenv("ENDPOINT_KEY")
 KB = os.getenv("KB")
 
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv("DEBUG") == "true" else False
 
