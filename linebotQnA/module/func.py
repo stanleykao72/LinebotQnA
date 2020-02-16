@@ -70,3 +70,14 @@ def sendMe(event):
         text=content
     )
     line_bot_api.reply_message(event.reply_token, message)
+
+
+def sendProfile(event):
+    profile = line_bot_api.get_profile(event.source.user_id)
+    my_status_message = profile.status_message
+    if not my_status_message:
+        my_status_message = '_'
+    message = [TextSendMessage(text='Display name: ' + profile.display_name),
+               TextSendMessage(text='picture url: ' + profile.picture_url),
+               TextSendMessage(text='status_message: ' + my_status_message)]
+    line_bot_api.reply_message(event.reply_token, message)
