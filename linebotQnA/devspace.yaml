@@ -1,0 +1,26 @@
+version: v1beta6
+images:
+  default:
+    image: dscr.io/${DEVSPACE_USERNAME}/linebotqna
+deployments:
+- name: linebotqna
+  helm:
+    componentChart: true
+    values:
+      containers:
+      - image: dscr.io/${DEVSPACE_USERNAME}/linebotqna
+      service:
+        ports:
+        - port: 8000
+dev:
+  ports:
+  - imageName: default
+    forward:
+    - port: 8000
+  open:
+  - url: http://localhost:8000
+  sync:
+  - imageName: default
+    excludePaths:
+    - Dockerfile
+    - devspace.yaml
