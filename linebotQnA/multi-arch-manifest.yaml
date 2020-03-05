@@ -1,0 +1,16 @@
+image: stanleykao72/linebot-multiarch:latest
+manifests:
+  - image: stanleykao72/linebot-multiarch:amd64
+    platform:
+      architecture: amd64
+      os: linux
+  - image: stanleykao72/linebot-multiarch:arm32v7
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7
+  - image: stanleykao72/linebot-multiarch:arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
