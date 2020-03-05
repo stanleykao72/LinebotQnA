@@ -1,4 +1,4 @@
-FROM python:3.7.6
+FROM amd64/python:3.7.6
 
 # Create project directory (workdir)
 RUN mkdir /app
