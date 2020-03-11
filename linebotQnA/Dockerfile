@@ -1,13 +1,11 @@
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}mono AS builder
+FROM ${BASE_IMAGE_PREFIX}python:3.7.7-alpine3.10
 
 # see hooks/post_checkout
 ARG ARCH
 
-FROM python:3.7.7-alpine3.10
-
 # HACK: don't fail when no qemu binary provided
-COPY --from=builder .gitignore qemu-${ARCH}-static* /usr/bin/
+COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
 
 # ================
