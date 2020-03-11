@@ -24,8 +24,13 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
 # Install dependencies
 RUN apk --update add --no-cache \ 
-    gcc \
-    g++
+        gcc \
+        g++ \
+        libgfortran && \
+    apk --update add --no-cache \
+        build-base libstdc++ \
+        libpng libpng-dev \
+        freetype freetype-dev && \
 
 # install postgress client
 RUN apk add --no-cache postgresql-client=11.7-r0 postgresql-dev=11.7-r0
@@ -37,6 +42,12 @@ WORKDIR /app
 # Add requirements.txt to WORKDIR and install dependencies
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+
+# Cleanup
+    apk del --purge build-base libgfortran libpng-dev freetype-dev \
+                    python3-dev && \
+                    # py-numpy-dev && \
+    rm -vrf /var/cache/apk/*
 
 # Add the remaining source code files to WORKDIR
 COPY . .
