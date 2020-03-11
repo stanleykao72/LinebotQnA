@@ -25,7 +25,9 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # ================
 
 # install postgress client
-RUN apt install postgresql libpq-dev postgresql-client postgresql-client-common -y
+RUN apk add --no-cache \
+    postgresql-client=11.4-r0 \
+    postgresql-dev=11.4-r0
 
 # Create project directory (workdir)
 RUN mkdir /app
