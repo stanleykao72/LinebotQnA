@@ -4,7 +4,7 @@ FROM ${BASE_IMAGE_PREFIX}mono
 # see hooks/post_checkout
 ARG ARCH
 
-FROM python:3.7.6
+FROM python:3.7.7-alpine3.10
 
 # HACK: don't fail when no qemu binary provided
 COPY .gitignore qemu-${ARCH}-static* /usr/bin/
