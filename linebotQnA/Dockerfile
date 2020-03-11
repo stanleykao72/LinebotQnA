@@ -1,5 +1,5 @@
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}mono
+FROM ${BASE_IMAGE_PREFIX}mono AS builder
 
 # see hooks/post_checkout
 ARG ARCH
@@ -7,7 +7,7 @@ ARG ARCH
 FROM python:3.7.7-alpine3.10
 
 # HACK: don't fail when no qemu binary provided
-COPY .gitignore qemu-${ARCH}-static* /usr/bin/
+COPY --from=builder .gitignore qemu-${ARCH}-static* /usr/bin/
 
 
 # ================
@@ -25,9 +25,7 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # ================
 
 # install postgress client
-RUN apk add --no-cache \
-    postgresql-client=12.2-r1 \
-    postgresql-dev=12.2-r1
+RUN apk add --no-cache postgresql-client=12.2-r1 postgresql-dev=12.2-r1
 
 # Create project directory (workdir)
 RUN mkdir /app
