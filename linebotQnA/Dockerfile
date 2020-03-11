@@ -22,6 +22,11 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # COPY --from=builder qemu-aarch64-static /usr/bin
 # ================
 
+# Install dependencies
+RUN apk --update add --no-cache \ 
+    gcc \
+    g++
+
 # install postgress client
 RUN apk add --no-cache postgresql-client=11.7-r0 postgresql-dev=11.7-r0
 
