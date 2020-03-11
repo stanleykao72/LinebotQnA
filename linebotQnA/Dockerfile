@@ -24,6 +24,9 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # COPY --from=builder qemu-aarch64-static /usr/bin
 # ================
 
+# install postgress client
+RUN apt install postgresql libpq-dev postgresql-client postgresql-client-common -y
+
 # Create project directory (workdir)
 RUN mkdir /app
 WORKDIR /app
