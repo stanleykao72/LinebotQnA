@@ -28,6 +28,8 @@ RUN apk --update add --no-cache \
         gcc \
         g++ \
         libgfortran \
+        libxml2-dev  \
+        libxslt-dev \
         libxml2
 RUN apk --update add --no-cache \
         build-base libstdc++ \
