@@ -27,11 +27,11 @@ RUN apk --update add --no-cache \
         wget \ 
         gcc \
         g++ \
-        libgfortran && \
-    apk --update add --no-cache \
+        libgfortran
+RUN apk --update add --no-cache \
         build-base libstdc++ \
         libpng libpng-dev \
-        freetype freetype-dev && \
+        freetype freetype-dev
 
 # Install data science
 RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
@@ -39,10 +39,10 @@ RUN apk update
 RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
 # Install pandas
 RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas=0.23.4-r0
+RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas
 
 # install postgress client
-RUN apk add --no-cache postgresql-client=11.7-r0 postgresql-dev=11.7-r0
+RUN apk add --no-cache postgresql-client postgresql-dev
 
 # Create project directory (workdir)
 RUN mkdir /app
