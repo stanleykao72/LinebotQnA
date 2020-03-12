@@ -23,7 +23,8 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # ================
 
 # Install dependencies
-RUN apk --update add --no-cache \ 
+RUN apk --update add --no-cache \
+        wget \ 
         gcc \
         g++ \
         libgfortran && \
@@ -31,6 +32,14 @@ RUN apk --update add --no-cache \
         build-base libstdc++ \
         libpng libpng-dev \
         freetype freetype-dev && \
+
+# Install data science
+RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk update
+RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
+# Install pandas
+RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas=0.23.4-r0
 
 # install postgress client
 RUN apk add --no-cache postgresql-client=11.7-r0 postgresql-dev=11.7-r0
@@ -44,10 +53,8 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Cleanup
-    apk del --purge build-base libgfortran libpng-dev freetype-dev \
-                    python3-dev && \
-                    # py-numpy-dev && \
-    rm -vrf /var/cache/apk/*
+RUN apk del --purge build-base libgfortran libpng-dev freetype-dev python3-dev && \
+RUN rm -vrf /var/cache/apk/*
 
 # Add the remaining source code files to WORKDIR
 COPY . .
