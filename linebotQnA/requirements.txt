@@ -11,7 +11,7 @@ gunicorn==20.0.4
 idna==2.8
 line-bot-sdk==1.15.0
 pathspec==0.7.0
-psycopg2==2.8.4
+psycopg2-binary==2.8.4
 pytz==2019.3
 regex==2019.12.20
 requests==2.22.0
