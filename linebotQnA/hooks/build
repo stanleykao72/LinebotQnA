@@ -4,6 +4,8 @@ set -eu
 echo "🔵 build"
 source hooks/.config
 
+
+echo "build image Stage: $STAGE"
 echo "✅ Will build the following architectures: $verified_build_architectures"
 echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 
@@ -16,7 +18,7 @@ for arch in ${verified_build_architectures[@]}; do
     --build-arg BASE_IMAGE_PREFIX=${BASE_IMAGE_PREFIX} \
     --build-arg ARCH=${arch} \
     --file $DOCKERFILE_PATH \
-    --tag "${IMAGE_NAME}-${arch}"  \
+    --tag "${STAGE}-${IMAGE_NAME}-${arch}"  \
     .
 done
 
