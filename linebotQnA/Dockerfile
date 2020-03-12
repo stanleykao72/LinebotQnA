@@ -1,5 +1,5 @@
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}python:3.7.7-alpine3.10
+FROM ${BASE_IMAGE_PREFIX}python:3.7-slim-buster
 
 # see hooks/post_checkout
 ARG ARCH
@@ -45,7 +45,19 @@ RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine
 RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas
 
 # install postgress client
-RUN apk add --no-cache postgresql-client postgresql-dev
+# RUN apk add --no-cache postgresql-client postgresql-dev
+
+# install dependencies
+# RUN apt-get -qq update \
+#    && apt-get install -yqq --no-install-recommends \
+#       curl \
+#    && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
+#    && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+#    && apt-get update \
+#    && apt-get install -yqq --no-install-recommends postgresql-client \
+#    && apt-get autopurge -yqq \
+#    && sync
+    
 
 # Create project directory (workdir)
 RUN mkdir /app
@@ -56,7 +68,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Cleanup
-RUN apk del --purge build-base libgfortran libpng-dev freetype-dev python3-dev && \
+RUN apk del --purge build-base libpng-dev freetype-dev
 RUN rm -vrf /var/cache/apk/*
 
 # Add the remaining source code files to WORKDIR
