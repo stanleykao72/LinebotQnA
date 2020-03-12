@@ -27,7 +27,8 @@ RUN apk --update add --no-cache \
         wget \ 
         gcc \
         g++ \
-        libgfortran
+        libgfortran \
+        libxml2
 RUN apk --update add --no-cache \
         build-base libstdc++ \
         libpng libpng-dev \

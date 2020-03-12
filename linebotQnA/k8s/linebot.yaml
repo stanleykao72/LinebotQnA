@@ -37,8 +37,10 @@ metadata:
       name: linebot
    namespace: linebot-namespace
 spec:
+   type: NodePort
    ports:
    - port: 8000
      targetPort: 8000
+     nodePort: 30010
    selector:
       name: linebot
