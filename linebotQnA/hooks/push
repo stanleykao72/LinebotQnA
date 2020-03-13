@@ -8,10 +8,10 @@ source hooks/.config
 IMAGE_NAME="${IMAGE_NAME//index.docker.io\/}"
 
 for arch in ${verified_build_architectures[@]}; do
-  echo "✅ Pushing ${IMAGE_NAME}-${arch}"
+  echo "✅ Pushing ${STAGE}-${arch}"
   echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
   echo
-  docker push ${IMAGE_NAME}-${arch}
+  docker push ${STAGE}-${arch}
 done
 
 docker image ls
@@ -21,7 +21,7 @@ docker image ls
 manifests=""
 
 for arch in ${verified_build_architectures[@]}; do
-  manifests="${manifests} ${IMAGE_NAME}-${arch}"
+  manifests="${manifests} ${STAGE}-${arch}"
 done
 
 echo "✅ Creating manifest ${IMAGE_NAME}"
@@ -34,14 +34,14 @@ echo "✅ Annotating manifest"
 echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
 for arch in ${verified_build_architectures[@]}; do
     docker manifest annotate ${IMAGE_NAME} \
-    ${IMAGE_NAME}-${arch} \
+    ${STAGE}-${arch} \
     --os linux \
     --arch ${docker_to_manifest_map[${arch}]}
 done
 
-echo "✅ Inspecting manifest ${IMAGE_NAME}-${arch}"
+echo "✅ Inspecting manifest ${STAGE}-${arch}"
 echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-docker manifest inspect ${IMAGE_NAME}-${arch}
+docker manifest inspect ${STAGE}-${arch}
 echo
 
 echo "✅ Pushing manifest ${IMAGE_NAME}"
