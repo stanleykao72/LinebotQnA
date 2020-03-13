@@ -44,9 +44,9 @@ echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯�
 docker manifest inspect ${IMAGE_NAME}-${STAGE}-${arch}
 echo
 
-echo "✅ Pushing manifest ${IMAGE_NAME}-${STAGE}-${arch}"
+echo "✅ Pushing manifest ${IMAGE_NAME}"
 echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
-docker manifest push --purge "${IMAGE_NAME}-${STAGE}-${arch}"
+docker manifest push --purge "${IMAGE_NAME}"
 echo
 
 echo
