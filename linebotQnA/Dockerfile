@@ -64,23 +64,25 @@ RUN apt-get -qq update \
     && sync
     
 
+
+# Stage 1
 # Create project directory (workdir)
-RUN mkdir /app
-WORKDIR /app
+# RUN mkdir /app
+# WORKDIR /app
 
 # Add requirements.txt to WORKDIR and install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# COPY requirements.txt .
+# RUN pip install -r requirements.txt
 
 # Cleanup
 # RUN apk del --purge build-base libpng-dev freetype-dev
 # RUN rm -vrf /var/cache/apk/*
 
 # Add the remaining source code files to WORKDIR
-COPY . .
+# COPY . .
 
-ENTRYPOINT ["python"]
+# ENTRYPOINT ["python"]
 
 # The script to start on startup
 # YOU PROBABLY NEED TO EDIT THE FOLLOWING LINE
-CMD ["manage.py","runserver"]
+# CMD ["manage.py","runserver"]
