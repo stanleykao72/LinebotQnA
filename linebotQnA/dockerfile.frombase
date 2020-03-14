@@ -5,7 +5,7 @@ FROM stanleykao72/linebot-multiarch:base-${ARCH}
 COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
 # install dependences
-RUN sudo apt-get install libxml2-dev libxslt1-dev
+RUN apt-get install libxml2-dev libxslt1-dev
 
 # Stage 1
 # Create project directory (workdir)
