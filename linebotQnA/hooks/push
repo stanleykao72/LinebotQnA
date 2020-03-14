@@ -11,7 +11,7 @@ for arch in ${verified_build_architectures[@]}; do
   echo "✅ Pushing ${IMAGE_NAME}-${STAGE}.${arch}"
   echo "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯"
   echo
-  docker push ${STAGE}-${arch}
+  docker push ${IMAGE_NAME}-${STAGE}.${arch}
 done
 
 docker image ls
