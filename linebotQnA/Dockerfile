@@ -64,7 +64,7 @@ RUN apt-get -qq update \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/share/doc && rm -rf /usr/share/man \
     && apt-get autopurge -yqq \
-    && apt-get clean
+    && apt-get clean \
     && sync
     
 
