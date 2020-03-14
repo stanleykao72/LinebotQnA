@@ -6,7 +6,7 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
 # install dependences
 RUN apt-get install -yqq --no-install-recommends \
-    libxml2v \ 
+    libxml2 \ 
     libxslt
 
 # Stage 1
