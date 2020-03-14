@@ -7,7 +7,8 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # install dependences
 RUN apt-get install -yqq --no-install-recommends \
     libxml2 \
-    libxlt1-dev 
+    libxlt1-dev \
+    liblz-dev 
 
 # Stage 1
 # Create project directory (workdir)
