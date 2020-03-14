@@ -1,5 +1,5 @@
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}python:3.7-slim-buster
+FROM ${BASE_IMAGE_PREFIX}python:3.7.7-slim-buster
 
 # see hooks/post_checkout
 ARG ARCH
@@ -55,12 +55,16 @@ RUN apt-get -qq update \
        gnupg2 \
        libpq-dev \
        python3-dev \
+       python3-xml \
        build-essential \
     && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
     && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && apt-get update \
     && apt-get install -yqq --no-install-recommends postgresql-client \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/doc && rm -rf /usr/share/man \
     && apt-get autopurge -yqq \
+    && apt-get clean
     && sync
     
 
