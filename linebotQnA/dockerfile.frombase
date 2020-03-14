@@ -4,6 +4,8 @@ FROM stanleykao72/linebot-multiarch:base-${ARCH}
 # HACK: don't fail when no qemu binary provided
 COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
+# install dependences
+RUN sudo apt-get install libxml2-dev libxslt1-dev
 
 # Stage 1
 # Create project directory (workdir)
