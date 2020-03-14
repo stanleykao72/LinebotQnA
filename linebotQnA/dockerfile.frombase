@@ -6,9 +6,8 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
 # install dependences
 RUN apt-get install -yqq --no-install-recommends \
-    libxml2-dev \
-    libxslt1-dev \
-    liblz-dev 
+    build-dep \
+    python3-lxml
 
 # Stage 1
 # Create project directory (workdir)
