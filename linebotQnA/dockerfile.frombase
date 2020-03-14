@@ -6,7 +6,6 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
 # install dependences
 RUN apt-get install -yqq --no-install-recommends \
-    build-dep \
     python3-lxml
 
 # Stage 1
