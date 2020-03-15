@@ -56,6 +56,9 @@ RUN apt-get -qq update \
        libpq-dev \
        libxml2-dev \
        libxslt-dev \
+       liblz-dev \
+       liblmdb-dev \ 
+       liblmdb++-dev \
        python3-dev \
        python3-lxml \
        build-essential \
