@@ -55,7 +55,7 @@ RUN apt-get -qq update \
        gnupg2 \
        libpq-dev \
        python3-dev \
-       python3-xml \
+       python3-lxml \
        build-essential \
     && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
     && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
