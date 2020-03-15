@@ -43,7 +43,7 @@ RUN apk --update add --no-cache \
 RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN apk update
 RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
-Install pandas
+# Install pandas
 RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas
 
