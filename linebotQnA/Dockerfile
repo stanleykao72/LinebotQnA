@@ -54,6 +54,8 @@ RUN apt-get -qq update \
     && apt-get install -yqq --no-install-recommends \
        gnupg2 \
        libpq-dev \
+       libxml2-dev \
+       libxslt-dev \
        python3-dev \
        python3-lxml \
        build-essential \
