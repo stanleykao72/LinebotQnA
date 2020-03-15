@@ -9,6 +9,9 @@ RUN apt-get install -yqq --no-install-recommends \
             libxml2-dev \
     && apt-get install -yqq --no-install-recommends \
             libxslt-dev \
+    && apt-get install -yqq --no-install-recommends \
+            cpython3 \
+            python_lxml \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /usr/share/doc && rm -rf /usr/share/man \
     && apt-get autopurge -yqq \
