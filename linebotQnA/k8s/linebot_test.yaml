@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+   name: linebot-test
+   labels:
+      name: linebot-test
+   namespace: linebot-namespace
+spec:
+   replicas: 1
+   selector:
+      name: linebot-test
+   template:
+      metadata:
+         labels:
+            name: linebot-test
+      spec:
+         containers:
+         - name: linebot-test
+           image: stanleykao72/linebot-multiarch:base-arm
+           ports:
+           - containerPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service 
+metadata:
+   name: linebot-test
+   labels:
+      name: linebot-test
+   namespace: linebot-namespace
+spec:
+   type: NodePort
+   ports:
+   - port: 8000
+     targetPort: 8000
+     nodePort: 30011
+   selector:
+      name: linebot-test
