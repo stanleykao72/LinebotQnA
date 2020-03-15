@@ -1,5 +1,8 @@
+
+# ARG BASE_IMAGE_PREFIX
+# FROM ${BASE_IMAGE_PREFIX}python:3.7.7-slim-buster
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}python:3.7.7-slim-buster
+FROM ${BASE_IMAGE_PREFIX}python:3.7.7-alpine3.10
 
 # see hooks/post_checkout
 ARG ARCH
@@ -22,55 +25,55 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 # COPY --from=builder qemu-aarch64-static /usr/bin
 # ================
 
-# Install dependencies
-# RUN apk --update add --no-cache \
-#        wget \ 
-#        gcc \
-#        g++ \
-#        libgfortran \
-#        libxml2-dev  \
-#        libxslt-dev \
-#        libxml2
-# RUN apk --update add --no-cache \
-#        build-base libstdc++ \
-#        libpng libpng-dev \
-#        freetype freetype-dev
+# APK Install dependencies
+RUN apk --update add --no-cache \
+        wget \ 
+        gcc \
+        g++ \
+        libgfortran \
+        libxml2-dev  \
+        libxslt-dev \
+        libxml2
+RUN apk --update add --no-cache \
+        build-base libstdc++ \
+        libpng libpng-dev \
+        freetype freetype-dev
 
 # Install data science
-# RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
-# RUN apk update
-# RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
-# Install pandas
-# RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-# RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas
+RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk update
+RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
+Install pandas
+RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas
 
 # install postgress client
-# RUN apk add --no-cache postgresql-client postgresql-dev
+RUN apk add --no-cache postgresql-client postgresql-dev
 
-# install dependencies
-RUN apt-get -qq update \
-    && apt-get install -yqq --no-install-recommends \
-       curl \
-    && apt-get install -yqq --no-install-recommends \
-       gnupg2 \
-       libpq-dev \
-       libxml2-dev \
-       libxslt-dev \
-       liblz-dev \
-       liblmdb-dev \ 
-       liblmdb++-dev \
-       python3-dev \
-       python3-lxml \
-       build-essential \
-    && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
-    && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && apt-get update \
-    && apt-get install -yqq --no-install-recommends postgresql-client \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /usr/share/doc && rm -rf /usr/share/man \
-    && apt-get autopurge -yqq \
-    && apt-get clean \
-    && sync
+# APT install dependencies
+# RUN apt-get -qq update \
+#    && apt-get install -yqq --no-install-recommends \
+#       curl \
+#    && apt-get install -yqq --no-install-recommends \
+#       gnupg2 \
+#       libpq-dev \
+#       libxml2-dev \
+#       libxslt-dev \
+#       liblz-dev \
+#       liblmdb-dev \ 
+#       liblmdb++-dev \
+#       python3-dev \
+#       python3-lxml \
+#       build-essential \
+#    && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list \
+#    && curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+#    && apt-get update \
+#    && apt-get install -yqq --no-install-recommends postgresql-client \
+#    && rm -rf /var/lib/apt/lists/* \
+#    && rm -rf /usr/share/doc && rm -rf /usr/share/man \
+#    && apt-get autopurge -yqq \
+#    && apt-get clean \
+#    && sync
     
 
 RUN pip install lxml
@@ -85,8 +88,8 @@ RUN pip install lxml
 # RUN pip install -r requirements.txt
 
 # Cleanup
-# RUN apk del --purge build-base libpng-dev freetype-dev
-# RUN rm -vrf /var/cache/apk/*
+RUN apk del --purge build-base libpng-dev freetype-dev
+RUN rm -vrf /var/cache/apk/*
 
 # Add the remaining source code files to WORKDIR
 # COPY . .
