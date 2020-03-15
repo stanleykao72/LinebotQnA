@@ -70,6 +70,7 @@ RUN apt-get -qq update \
     && sync
     
 
+RUN pip install lxml
 
 # Stage 1
 # Create project directory (workdir)
