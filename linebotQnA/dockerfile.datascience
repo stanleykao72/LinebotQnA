@@ -4,7 +4,7 @@ FROM stanleykao72/linebot-multiarch:Django-${ARCH}
 # HACK: don't fail when no qemu binary provided
 COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 
-RUN export MPLLOCALFREETYPE=1
+RUN export MPLLOCALFREETYPE=1 \
     && apk --update add --no-cache \
            make \
            libpng-dev \
