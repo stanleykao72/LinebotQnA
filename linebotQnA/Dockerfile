@@ -30,14 +30,18 @@ RUN apk --update add --no-cache \
         wget \ 
         gcc \
         g++ \
+        make \
         libgfortran \
         libxml2-dev  \
         libxslt-dev \
         libxml2
 RUN apk --update add --no-cache \
-        build-base libstdc++ \
-        libpng libpng-dev \
-        freetype freetype-dev
+        build-base\
+        libstdc++ \
+        libpng \
+        libpng-dev \
+        freetype \
+        freetype-dev
 
 # Install data science
 RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
