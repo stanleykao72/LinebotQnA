@@ -12,7 +12,7 @@ RUN export MPLLOCALFREETYPE=1 \
 
 # Stage 2
 # Create project directory (workdir)
-RUN mkdir /app
+# RUN mkdir /app
 WORKDIR /app
 
 # Add requirements.txt to WORKDIR and install dependencies
@@ -20,7 +20,7 @@ COPY requirements_datascience.txt .
 RUN pip install -r requirements_datascience.txt
 
 # Add the remaining source code files to WORKDIR
-# COPY . .
+COPY . .
 
 ENTRYPOINT ["python"]
 
