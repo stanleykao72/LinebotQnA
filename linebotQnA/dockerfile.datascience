@@ -7,12 +7,12 @@ COPY .gitignore qemu-${ARCH}-static* /usr/bin/
 RUN export MPLLOCALFREETYPE=1 \
     && apk --update add --no-cache \
            make \
-           libpng-dev \
+           libpng-dev 
     
 
 # Stage 2
 # Create project directory (workdir)
-# RUN mkdir /app
+RUN mkdir /app
 WORKDIR /app
 
 # Add requirements.txt to WORKDIR and install dependencies
