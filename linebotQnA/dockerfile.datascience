@@ -8,7 +8,7 @@ ENV MPLLOCALFREETYPE=1
 RUN apk --update add --no-cache \
     make \
     libpng-dev \ 
-    freetype >= 2.3
+    freetype>=2.3
 
 # Stage 2
 # Create project directory (workdir)
