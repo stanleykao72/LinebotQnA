@@ -20,7 +20,7 @@ COPY requirements_datascience.txt .
 RUN pip install -r requirements_datascience.txt
 
 # Cleanup
-RUN apk del --purge build-base libpng-dev freetype
+RUN apk del --purge libpng-dev freetype
 RUN rm -vrf /var/cache/apk/*
 
 # Add the remaining source code files to WORKDIR
