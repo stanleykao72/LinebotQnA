@@ -1,5 +1,5 @@
 ARG ARCH
-FROM stanleykao72/linebot-multiarch:Django-${ARCH}
+FROM stanleykao72/linebot-multiarch:pandas-${ARCH}
 
 # HACK: don't fail when no qemu binary provided
 COPY .gitignore qemu-${ARCH}-static* /usr/bin/
