@@ -44,11 +44,11 @@ RUN apk --update add --no-cache \
         freetype-dev
 
 # Install data science
-# RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
-# RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-# RUN apk update
-# RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
-# RUN apk add py3-pandas@testing
+RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk update
+RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
+RUN apk add py3-pandas@testing
 
 # set python path
 ENV PYTHONPATH=/usr/lib/python3.7/site-packages:/usr/lib/python3.8/site-packages
