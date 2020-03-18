@@ -51,7 +51,7 @@ RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
 RUN apk add py3-pandas@testing
 
 # set python path
-ENV PYTHONPATH=/usr/lib/python3.7/site-packages:/usr/lib/python3.8/site-packages
+ENV PYTHONPATH=/usr/local/lib/python3.8/site-packages:/usr/lib/python3.7/site-packages:/usr/lib/python3.8/site-packages
 
 # install postgress client
 RUN apk add --no-cache postgresql-client postgresql-dev
