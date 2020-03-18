@@ -18,7 +18,7 @@ WORKDIR /app
 # Add requirements.txt to WORKDIR and install dependencies
 #COPY requirements_datascience.txt .
 #RUN pip install -r requirements_datascience.txt
-pip install numpy
+RUN pip install numpy
 
 # Cleanup
 # RUN apk del --purge libpng-dev freetype
