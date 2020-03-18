@@ -2,7 +2,7 @@
 # ARG BASE_IMAGE_PREFIX
 # FROM ${BASE_IMAGE_PREFIX}python:3.7.7-slim-buster
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}python:3.7.7-alpine3.10
+FROM ${BASE_IMAGE_PREFIX}python:3.8.2-alpine3.11
 
 # see hooks/post_checkout
 ARG ARCH
@@ -44,12 +44,14 @@ RUN apk --update add --no-cache \
         freetype-dev
 
 # Install data science
-RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
-RUN apk update
-RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
-# Install pandas
-RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-RUN apk add --no-cache --repository=https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-py-pandas py-pandas
+# RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+# RUN echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+# RUN apk update
+# RUN apk add py3-numpy@community py3-scipy@community py3-matplotlib@community
+# RUN apk add py3-pandas@testing
+
+# set python path
+# ENV PYTHONPATH=$PATHONPATH:/usr/lib/python3.8/site-packages
 
 # install postgress client
 RUN apk add --no-cache postgresql-client postgresql-dev
