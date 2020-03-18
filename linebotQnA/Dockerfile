@@ -51,7 +51,7 @@ RUN apk --update add --no-cache \
 # RUN apk add py3-pandas@testing
 
 # set python path
-# ENV PYTHONPATH=$PATHONPATH:/usr/lib/python3.8/site-packages
+ENV PYTHONPATH=/usr/lib/python3.7/site-packages:/usr/lib/python3.8/site-packages
 
 # install postgress client
 RUN apk add --no-cache postgresql-client postgresql-dev
@@ -100,7 +100,7 @@ RUN rm -vrf /var/cache/apk/*
 # Add the remaining source code files to WORKDIR
 # COPY . .
 
-# ENTRYPOINT ["python"]
+ENTRYPOINT ["/bin/sh"]
 
 # The script to start on startup
 # YOU PROBABLY NEED TO EDIT THE FOLLOWING LINE
