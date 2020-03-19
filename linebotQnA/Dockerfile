@@ -2,7 +2,7 @@
 # ARG BASE_IMAGE_PREFIX
 # FROM ${BASE_IMAGE_PREFIX}python:3.7.7-slim-buster
 ARG BASE_IMAGE_PREFIX
-FROM ${BASE_IMAGE_PREFIX}python:3.7-alpine
+FROM ${BASE_IMAGE_PREFIX}python:3.8.2-alpine3.11
 
 # see hooks/post_checkout
 ARG ARCH
